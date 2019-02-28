@@ -63,3 +63,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise', '~>4.2'
 gem 'toastr-rails', '~>1.0'
+gem 'omniauth', '~> 1.6'
+gem 'omniauth-facebook', '~> 4.0'
