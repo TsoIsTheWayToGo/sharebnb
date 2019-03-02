@@ -1,8 +1,31 @@
-<%= form_for([@room, @room.reservations.new]) do |f| %>
-<%= f.text_field :start_date %>
-<%= f.text_field :end_date %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <span><i class="fa fa-bolt" style="color: #ffb400"></i>$<%= @room.price %></span>
+    <span class="pull-right">Per Night</span>
+  </div>
 
-<br/>
+  <div class="panel-body">
+    <%= form_for([@room, @room.reservations.new]) do |f| %>
+    <%= f.text_field :start_date %>
+    <%= f.text_field :end_date %>
 
-<%= f.submit "Book Now" %>
-<% end %>
+    <br/>
+
+    <%= f.submit "Book Now", class: "btn btn-normal btn-block" %>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+<script>
+  $(function() {
+    $('#reservation_start_date').datepicker({
+      dateFormat: 'dd-mm-yy'
+    });
+    $('#reservation_end_date').datepicker({
+      dateFormat: 'dd-mm-yy'
+    });
+  }); 
+</script>

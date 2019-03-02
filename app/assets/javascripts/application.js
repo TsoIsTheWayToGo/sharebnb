@@ -14,5 +14,6 @@
 //= require activestorage
 //= require toastr 
 //= require jquery
+//= require jquery-ui/datepicker
 //= require bootstrap-sprockets
 //= require_tree .
