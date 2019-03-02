@@ -9,6 +9,19 @@ GIT
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
 
+GIT
+  remote: https://github.com/activerecord-hackery/ransack.git
+  revision: ce254a97e8c390d7ab0b08d466682e5f83ddc5cd
+  specs:
+    polyamorous (2.1.1)
+      activerecord (>= 5.0)
+    ransack (2.1.1)
+      actionpack (>= 5.0)
+      activerecord (>= 5.0)
+      activesupport (>= 5.0)
+      i18n
+      polyamorous (= 2.1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -301,6 +314,7 @@ DEPENDENCIES
   paperclip!
   puma (~> 3.11)
   rails (~> 5.2.2)
+  ransack!
   sass-rails (~> 5.0)
   sassc-rails (>= 2.1.0)
   selenium-webdriver

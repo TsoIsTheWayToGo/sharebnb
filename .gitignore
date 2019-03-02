@@ -32,3 +32,4 @@
 /config/environments/development.rb
 /config/initializers/devise.rb
 /config/storage.yml
+/app/views/rooms/show.html.erb
