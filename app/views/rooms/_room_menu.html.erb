@@ -18,7 +18,7 @@
   <li class="sidebar-item">
     <%= link_to "Photos", photo_upload_room_path, class: "sidebar-link active" %>
     <% if !@room.photos.blank? %>
-    <span class="pull-right text-babu"><i class="fa fa-check"></i></span>
+    <span id="photo_check" class="pull-right text-babu"><i class="fa fa-check"></i></span>
     <% end %>
   </li>
   <li class="sidebar-item">
