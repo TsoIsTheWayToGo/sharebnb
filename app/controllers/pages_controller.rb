@@ -8,18 +8,21 @@ class PagesController < ApplicationController
     if params[:search].present? && params[:search].strip != ""
       session[:loc_search] = params[:search]
     end
-
+# debugger
     # STEP 2
     if session[:loc_search] && session[:loc_search] != ""
-      @rooms_address = Room.where(active: true).near(session[:loc_search], 5, order: 'distance')
+      @rooms_address = Room.where(active: true).near(session[:loc_search], 40, order: 'distance')
     else
       @rooms_address = Room.where(active: true).all
     end
 
     # STEP 3
+    # debugger
     @search = @rooms_address.ransack(params[:q])
-    @rooms = @search.result
+   
 
+    @rooms = @search.result
+    
     @arrRooms = @rooms.to_a
 
     # STEP 4

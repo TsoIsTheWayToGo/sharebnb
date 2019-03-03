@@ -347,3 +347,15 @@ a {
   margin-top: 50px;
   margin-bottom: 50px;
 }
+
+
+//carosuel
+.carousel-inner > .item > img {
+    margin: 0 auto;
+}
+
+div.sticky {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
