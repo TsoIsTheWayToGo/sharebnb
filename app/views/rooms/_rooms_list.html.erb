@@ -1,10 +1,12 @@
+
 <% rooms.each do |room| %>
     <div class="col-md-4">
+    
       <div class="panel panel-default">
-        <div class="panel-heading preview">
+        <div class="panel-heading preview img-rounded" style="max-height: 10;">
           <%= image_tag room.cover_photo(:medium) %>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" style="max-height: 10;">
           <%= link_to room.listing_name, room %><br/>
           $<%= room.price %> - <%= room.home_type %> - <%= pluralize(room.bed_room, "bed") %>
           <div id="star_<%= room.id %>"></div> <%= pluralize(room.average_rating, "review") %>
