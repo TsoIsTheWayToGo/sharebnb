@@ -10,10 +10,10 @@
       <%= text_field_tag :search, params[:search], placeholder: "Where are you going?", class: "form-control", id: "autolocation" %>
     </div>
     <div class="col-md-3">
-      <%= text_field_tag :start_date, params[:start_date], placeholder: "Start Date", class: "form-control datepicker" %>
+      <%= text_field_tag :start_date, params[:start_date], placeholder: "Start Date", class: "form-control datepicker", readonly: "true" %>
     </div>
     <div class="col-md-3">
-      <%= text_field_tag :end_date, params[:end_date], placeholder: "End Date", class: "form-control datepicker" %>
+      <%= text_field_tag :end_date, params[:end_date], placeholder: "End Date", class: "form-control datepicker", readonly: "true" %>
     </div>
   </div>
   <br/><br/>

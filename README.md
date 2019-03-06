@@ -23,3 +23,5 @@ Things you may want to cover:
 
 * ...
 ** TODO make readme
+
+ <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJW6iEErvkcYwMhpv1RZX-xOE7UygjWOA"></script>
