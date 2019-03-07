@@ -41,7 +41,11 @@ class User < ApplicationRecord
   end
 
   def send_pin
-    @client = Twilio::REST::Client.new
+  account_sid = Rails.application.secrets.TWILIO_A_KEY
+  auth_token = Rails.application.secrets.TWILIO_SECRET_KEY
+  @client = Twilio::REST::Client.new(account_sid, auth_token)
+
+    
     @client.messages.create(
       from: '+18317099669',
       to: self.phone_number,
