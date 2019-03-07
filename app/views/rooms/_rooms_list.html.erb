@@ -4,7 +4,8 @@
     
       <div class="panel panel-default">
         <div class="panel-heading preview img-rounded" style="max-height: 10;">
-          <%= image_tag room.cover_photo(:medium) %>
+        
+          <%= link_to (image_tag room.cover_photo(:medium)), room %></a>
         </div>
         <div class="panel-body" style="max-height: 10;">
           <%= link_to room.listing_name, room %><br/>
