@@ -58,6 +58,8 @@
       <ul class="nav navbar-nav">
         <li <% if current_page?(dashboard_path) %> class="active"<% end %>><%= link_to "Dashboard", dashboard_path %></li>
         <li <% if current_page?(rooms_path) %> class="active"<% end %>><%= link_to "Manage Listings", rooms_path %></li>
+        <li <% if current_page?(dashboard_path) %> class="active"<% end %>><%= link_to "Your Reservations", your_reservations_path %></li>
+        <li <% if current_page?(dashboard_path) %> class="active"<% end %>><%= link_to "Your Trips", your_trips_path %></li>
       </ul>
     </div>
   </nav>
