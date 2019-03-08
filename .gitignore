@@ -34,3 +34,5 @@
 /config/storage.yml
 /app/views/rooms/show.html.erb
 /config/initializers/devise.rb
+/config/initializers/twilio.rb
+/config/secrets.yml

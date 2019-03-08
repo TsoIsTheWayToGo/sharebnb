@@ -71,3 +71,5 @@ gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'geocoder', '~> 1.4'
 gem 'jquery-ui-rails', '~> 5.0'
 gem 'ransack', github: 'activerecord-hackery/ransack'
+
+gem 'twilio-ruby', '~> 4.11.1'
