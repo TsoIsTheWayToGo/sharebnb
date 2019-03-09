@@ -57,9 +57,17 @@
     <div class="container">
       <ul class="nav navbar-nav">
         <li <% if current_page?(dashboard_path) %> class="active"<% end %>><%= link_to "Dashboard", dashboard_path %></li>
+
         <li <% if current_page?(rooms_path) %> class="active"<% end %>><%= link_to "Manage Listings", rooms_path %></li>
-        <li <% if current_page?(dashboard_path) %> class="active"<% end %>><%= link_to "Your Reservations", your_reservations_path %></li>
-        <li <% if current_page?(dashboard_path) %> class="active"<% end %>><%= link_to "Your Trips", your_trips_path %></li>
+
+      <% if @rooms.length > 0 %>
+        <li <% if current_page?(your_reservations_path) %> class="active"<% end %>><%= link_to "Your Reservations", your_reservations_path %></li>
+      <% end %>  
+
+      <% if @rooms.length > 0 %>
+        <li <% if current_page?(your_reservations_path) %> class="active"<% end %>><%= link_to "Calendar", host_calendar_path %></li>
+      <% end %>  
+        <li <% if current_page?(your_trips_path) %> class="active"<% end %>><%= link_to "Your Trips", your_trips_path %></li>
       </ul>
     </div>
   </nav>
