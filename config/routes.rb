@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     end
     resources :photos, only: [:create, :destroy]
     resources :reservations, only: [:create]
+    resources :calendars
   end
   resources :guest_reviews, only: [:create, :destroy]
   resources :host_reviews, only: [:create, :destroy]
@@ -46,5 +47,7 @@ Rails.application.routes.draw do
       
     end
   end
+
+  get '/host_calendar' => "calendars#host"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
