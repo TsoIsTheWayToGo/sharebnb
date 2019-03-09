@@ -2,7 +2,7 @@ class CalendarsController < ApplicationController
   before_action :authenticate_user!
   include ApplicationHelper
   def create
-
+    
   end
 
   def host
@@ -37,5 +37,10 @@ class CalendarsController < ApplicationController
 
   end
   
-  
+  private
+
+  def calendar_params
+    params.require(:calendar).permit([:price, :status, :start_date, :end_date])
+  end
+
 end
