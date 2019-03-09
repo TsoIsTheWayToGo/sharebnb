@@ -43,7 +43,7 @@ class ReservationsController < ApplicationController
     @rooms = current_user.rooms
   end
 
-  def approved
+  def approve
     @reservation.Approved!
     redirect_to your_reservations_path
   end
