@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :confirmable, :omniauthable
 
   validates :fullname, presence: true, length: {maximum: 50}
-
+  validates :email, presence: true, format: /\A[^@]+@[^@]+\z/
   has_many :rooms
   has_many :reservations
 
