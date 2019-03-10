@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/activerecord-hackery/ransack.git
-  revision: ce254a97e8c390d7ab0b08d466682e5f83ddc5cd
+  revision: d44bfe6fe21ab374ceea9d060267d0d38b09ef28
   specs:
     polyamorous (2.1.1)
       activerecord (>= 5.0)
@@ -71,7 +71,7 @@ GEM
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
-    autoprefixer-rails (9.4.10.1)
+    autoprefixer-rails (9.4.10.2)
       execjs
     aws-eventstream (1.0.1)
     aws-partitions (1.143.0)
@@ -83,7 +83,7 @@ GEM
     aws-sdk-kms (1.13.0)
       aws-sdk-core (~> 3, >= 3.39.0)
       aws-sigv4 (~> 1.0)
-    aws-sdk-s3 (1.30.1)
+    aws-sdk-s3 (1.31.0)
       aws-sdk-core (~> 3, >= 3.39.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.0)

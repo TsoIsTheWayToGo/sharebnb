@@ -1,6 +1,6 @@
 <% if !@rooms.blank? %>
   <div class="row">
-    <%= search_form_for @search, class: 'form-group', remote: true, url: host_calendar_path do |f| %>
+    <%= search_form_for @search, class: 'form-group', url: host_calendar_path do |f| %>
       <div class="col-md-6 select">
         <div class="form-group">
           <label>Your Listings</label>
@@ -15,14 +15,13 @@
     <% end %>
   </div>
 <% end %>
-
+<div id="calendar"></div>
 <%= render 'form' %>
 
-<div id="calendar"></div>
 
 <script>
   window.reservations = <%= raw @events.to_json %>
-  console.log(reservations);
+  window.days = <%= raw @days.to_json %>
 
   function showReservations(data) {
     return data.map(function (e) {
@@ -38,7 +37,7 @@
         status: e.status
       }
     })
-  };
+  }
 
   $('#calendar').fullCalendar({
     header: {
@@ -58,12 +57,28 @@
       `);
     },
     dayRender: function(date, cell) {
+      var dayInfo = $.grep(days, function(e) {
+        return e.day === date.format();
+      });
+
+    
+
       <% if !@rooms.blank? %>
-        cell.append('<span class="day-price">' + '$<%= @room.price %>' + '</span>')
-        <% end %>
+        if (dayInfo.length > 0) {
+          if (dayInfo[0].status == "Not_Available") {
+            cell.addClass('fc-past');
+          } else {
+            cell.append('<span class="day-price">' + '$' + dayInfo[0].price + '</span>')
+          }
+        } else {
+          cell.append('<span class="day-price">' + '$<%= @room.price %>' + '</span>')
+        }
+      <% end %>
+
+
     },
     selectable: true,
-       select: function(start, end, jsEvent, view) {
+    select: function(start, end, jsEvent, view) {
       var start_date = moment(start);
       var end_date = moment(end).subtract(1, "days");
 
@@ -98,8 +113,6 @@
     }
   });
 
-
-
   $('.fc-prev-button').click(function() {
     var current = new Date($('#start-date').val());
     var prev = new Date(current.getFullYear(), current.getMonth() - 1, 1)
@@ -113,6 +126,7 @@
     $('#start-date').val(moment(next).format('YYYY-MM-DD'))
     $('#start-date').trigger('change')
   });
+
 
 </script>
 

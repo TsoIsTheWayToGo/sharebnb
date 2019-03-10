@@ -20,6 +20,8 @@ class Room < ApplicationRecord
 
   def cover_photo(size)
     if self.photos.length > 0
+      # debugger
+
       self.photos[0].image.url(size)
     else
       "blank.jpg"
