@@ -44,6 +44,7 @@ end
 
 
 def add_card
+ 
   if current_user.stripe_id.blank?
     customer = Stripe::Customer.create(
       email: current_user.email
@@ -60,7 +61,7 @@ def add_card
     :number => params[:number],
     :exp_month => month,
     :exp_year => year,
-    :cvv => params[:cvv]
+    :cvc => params[:cvv]
   })
   customer.sources.create(source: new_token.id)
 
