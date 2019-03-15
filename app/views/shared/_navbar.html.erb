@@ -62,13 +62,14 @@
         
       <% if current_user.rooms.length > 0 %>
         <li <% if current_page?(your_reservations_path) %> class="active"<% end %>><%= link_to "Your Reservations", your_reservations_path %></li> 
-        <li <% if current_page?(your_reservations_path) %> class="active"<% end %>><%= link_to "Calendar", host_calendar_path %></li>
+        <li <% if current_page?(host_calendar_path) %> class="active"<% end %>><%= link_to "Calendar", host_calendar_path %></li>
       <% end %>  
-
-     
-     
-
         <li <% if current_page?(your_trips_path) %> class="active"<% end %>><%= link_to "Your Trips", your_trips_path %></li>
+        <li <% if current_page?(payment_method_path) %> class="active"<% end %>><%= link_to "Account Settings", your_trips_path %></li>
+
+     
+     
+
       </ul>
     </div>
   </nav>
