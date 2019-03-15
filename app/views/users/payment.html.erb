@@ -7,6 +7,7 @@
     </ul>
   </div>
 
+  
   <div class="col-md-9">
     <div class="panel panel-default">
       <div class="panel-heading">Payment Method</div>
@@ -14,6 +15,49 @@
           <div class="container">
 
             <div class="card" style="margin-bottom: 20px"></div>
+
+              <%= form_tag("/add-card", method: "post", id: "add-card") %>
+                <div class="row pull-center">
+                  <div class="col-md-12">
+                    <div class="well">
+                      <div class="row">
+                        <div class="col-md-8 form-group">
+                          <label>Card Number</label>
+                          <input type="text" name="number" class="form-control"/>
+                        </div>
+
+                        <div class="col-md-4 form-group">
+                          <label>Expiration</label>
+                          <input type="text" placeholder="MM/YY" name="expiry" class="form-control"/>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-8 form-group">
+                          <label>Cardholder Name</label>
+                          <input type="text" name="name" class="form-control"/>
+                        </div>
+
+                        <div class="col-md-4 form-group">
+                          <label>CVV</label>
+                          <input type="text" name="cvv" class="form-control"/>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12 text-right">
+                          <% if current_user.stripe_id.blank? %>
+                          <button class="btn btn-normal">Add Card</button>
+                          <% else %>
+                          <button class="btn btn-normal">Update Card</button>
+                          <% end %>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              <% end %>
 
           </div>
         </div>
