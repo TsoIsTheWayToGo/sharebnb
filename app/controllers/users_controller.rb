@@ -75,6 +75,7 @@ end
 
   private
 
+
   def user_params
     params.require(:user).permit(:phone_number, :pin)
 
