@@ -59,6 +59,7 @@
         <li <% if current_page?(dashboard_path) %> class="active"<% end %>><%= link_to "Dashboard", dashboard_path %></li>
 
         <li <% if current_page?(rooms_path) %> class="active"<% end %>><%= link_to "Manage Listings", rooms_path %></li>
+        <li <% if current_page?(rooms_path) %> class="active"<% end %>><%= link_to "Revenues", revenues_path %></li>
         
       <% if current_user.rooms.length > 0 %>
         <li <% if current_page?(your_reservations_path) %> class="active"<% end %>><%= link_to "Your Reservations", your_reservations_path %></li> 
