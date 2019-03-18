@@ -50,6 +50,7 @@ Rails.application.routes.draw do
 
   get '/host_calendar' => "calendars#host"
   get '/payment_method' => "users#payment"
+  get '/payout_method' => "users#payout"
   post '/add_card' => "users#add_card"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
