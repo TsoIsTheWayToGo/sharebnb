@@ -73,6 +73,9 @@ class UsersController < ApplicationController
   end
 
 
+  def is_active_host
+    !self.merchant_id.blank?
+  end
   private
 
 
