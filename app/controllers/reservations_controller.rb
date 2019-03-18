@@ -57,30 +57,35 @@ class ReservationsController < ApplicationController
 
   private
   
-  def charge(room, reservation)
-    unless reservation.user.stripe_id.blank?
-      customer = Stripe::Customer.retrieve(reservation.user.stripe_id)
-      charge = Stripe::Charge.create(
-        :customer => customer.id,
-        :amount => reservation.total * 100,
-        :description => room.listing_name,
-        :currency => "usd"
-      )
+def charge(room, reservation)
+      if !reservation.user.stripe_id.blank?
+        customer = Stripe::Customer.retrieve(reservation.user.stripe_id)
+        charge = Stripe::Charge.create(
+          :customer => customer.id,
+          :amount => reservation.total * 100,
+          :description => room.listing_name,
+          :currency => "usd"
+          # :destination => {
+          #   :amount => reservation.total * 80, # 80% of the total amount goes to the Host
+          #   :account => room.user.merchant_id # Host's Stripe customer ID
+          # }
+        )
 
-      if charge
-        reservation.Approved!
-        flash[:notice] = "Reservation is confirmed"
-      else
-        reservation.Declined!
-        flash[:alert] = "Your transaction has been Declined"
+        if charge
+          reservation.Approved!
+          ReservationMailer.send_email_to_guest(reservation.user, room).deliver_later if reservation.user.setting.enable_email
+          send_sms(room, reservation) if room.user.setting.enable_sms
+          flash[:notice] = "Reservation created successfully!"
+        else
+          reservation.Declined!
+          flash[:alert] = "Cannot charge with this payment method!"
+        end
       end
-
-    end
-    
     rescue Stripe::CardError => e
-      reservation.approved!
+      reservation.declined!
       flash[:alert] = e.message
-  end
+    end
+
   
   def set_reservation
     @reservation = Reservation.find(params[:id])
