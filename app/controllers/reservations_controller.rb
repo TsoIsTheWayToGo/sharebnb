@@ -57,7 +57,20 @@ class ReservationsController < ApplicationController
 
   private
   
-def charge(room, reservation)
+  def send_sms(room, reservation)
+    account_sid = Rails.application.secrets.TWILIO_A_KEY
+    auth_token = Rails.application.secrets.TWILIO_SECRET_KEY
+    @client = Twilio::REST::Client.new(account_sid, auth_token)
+
+    
+    @client.messages.create(
+      from: '+18317099669',
+      to: room.user.phone_number,
+      body: "#{reservation.user.fullname} booked your '#{room.listing_name}'"
+    )
+  end
+
+  def charge(room, reservation)
       if !reservation.user.stripe_id.blank?
         customer = Stripe::Customer.retrieve(reservation.user.stripe_id)
         charge = Stripe::Charge.create(
@@ -73,7 +86,7 @@ def charge(room, reservation)
 # need to make a new stripe account that has nothing to do with this site
         if charge
           reservation.Approved!
-          ReservationMailer.send_email_to_guest(reservation.user, room).deliver_later if reservation.user.setting.enable_email
+           ReservationMailer.send_email_to_guest(reservation.user, room).deliver_later if reservation.user.setting.enable_email
           send_sms(room, reservation) if room.user.setting.enable_sms
           flash[:notice] = "Reservation created successfully!"
         else
