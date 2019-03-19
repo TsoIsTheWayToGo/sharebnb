@@ -9,33 +9,43 @@ class ReservationsController < ApplicationController
     if current_user == room.user
       flash[:alert] = "You cannot book your own property!"
     elsif current_user.stripe_id.blank?
-      flash[:alert] = "Please update your payment method"
+      flash[:alert] = "Please update your payment method."
       return redirect_to payment_method_path
     else
       start_date = Date.parse(reservation_params[:start_date])
       end_date = Date.parse(reservation_params[:end_date])
       days = (end_date - start_date).to_i + 1
 
+      special_dates = room.calendars.where(
+        "status = ? AND day BETWEEN ? AND ? AND price <> ?",
+        0, start_date, end_date, room.price
+      )
+
       @reservation = current_user.reservations.build(reservation_params)
       @reservation.room = room
       @reservation.price = room.price
-      @reservation.total = room.price * days
+      # @reservation.total = room.price * days
       # @reservation.save
+
+      @reservation.total = room.price * (days - special_dates.count)
+      special_dates.each do |date|
+          @reservation.total += date.price
+      end
 
       if @reservation.Waiting!
         if room.Request?
-          flash[:notice] = "Request sent Successfully"
+          flash[:notice] = "Request sent successfully!"
         else
           charge(room, @reservation)
         end
       else
-        flash[:alert] = "Cannot make a Reservation"
-        
+        flash[:alert] = "Cannot make a reservation!"
       end
 
     end
     redirect_to room
   end
+
 
   def your_trips
     @trips = current_user.reservations.order(start_date: :asc)
