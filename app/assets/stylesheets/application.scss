@@ -218,7 +218,7 @@ a {
   font-size: 0.95em;
   text-align: center;
   width: 1.25em;
-  color: rgb(207, 63, 19);
+  color: #00A699;
 }
 
 // SIDEBAR
@@ -273,12 +273,10 @@ a {
 
 .panel-heading.preview {
   padding: 0;
-
 }
 
 .panel-heading.preview img {
   width: 100%;
-
 }
 
 // ROOM SHOW
@@ -360,18 +358,6 @@ a {
   margin-bottom: 50px;
 }
 
-
-//carosuel
-.carousel-inner > .item > img {
-    margin: 0 auto;
-}
-
-div.sticky {
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 0;
-}
-
 // CALENDAR
 .fc-content.Waiting {
   background-color: #C9CC6D;
@@ -405,12 +391,18 @@ div.sticky {
 
 .day-price {
   position: absolute;
-  color: #eaa900;
+  color: #EAA90B;
   bottom: 2px;
   right: 2px;
 }
 
-//payment form
+.badge {
+  background-color: #FF5A5F;
+  position: relative;
+  top: -15px;
+  left: -5px;
+}
+
 #add-card form {
   width: 480px;
   margin: 20px auto;
