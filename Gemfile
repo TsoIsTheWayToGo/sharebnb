@@ -82,3 +82,5 @@ gem 'stripe', '~> 3.0.0'
 gem 'rails-assets-card', source: 'http://rails-assets.org'
 
 gem 'omniauth-stripe-connect', '~> 2.10.0'
+
+gem 'chartkick', '~> 2.2.4'
