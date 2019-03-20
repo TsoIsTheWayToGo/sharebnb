@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2019_03_19_213831) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "calendars", force: :cascade do |t|
     t.date "day"
     t.integer "price"
     t.integer "status"
-    t.integer "room_id"
+    t.bigint "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_calendars_on_room_id"
@@ -31,8 +34,8 @@ ActiveRecord::Schema.define(version: 2019_03_19_213831) do
 
   create_table "messages", force: :cascade do |t|
     t.text "context"
-    t.integer "user_id"
-    t.integer "conversation_id"
+    t.bigint "user_id"
+    t.bigint "conversation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
@@ -41,14 +44,14 @@ ActiveRecord::Schema.define(version: 2019_03_19_213831) do
 
   create_table "notifications", force: :cascade do |t|
     t.string "content"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "photos", force: :cascade do |t|
-    t.integer "room_id"
+    t.bigint "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_file_name"
@@ -59,8 +62,8 @@ ActiveRecord::Schema.define(version: 2019_03_19_213831) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "room_id"
+    t.bigint "user_id"
+    t.bigint "room_id"
     t.datetime "start_date"
     t.datetime "end_date"
     t.integer "price"
@@ -75,10 +78,10 @@ ActiveRecord::Schema.define(version: 2019_03_19_213831) do
   create_table "reviews", force: :cascade do |t|
     t.text "comment"
     t.integer "star", default: 1
-    t.integer "room_id"
-    t.integer "reservation_id"
-    t.integer "guest_id"
-    t.integer "host_id"
+    t.bigint "room_id"
+    t.bigint "reservation_id"
+    t.bigint "guest_id"
+    t.bigint "host_id"
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -103,7 +106,7 @@ ActiveRecord::Schema.define(version: 2019_03_19_213831) do
     t.boolean "is_internet"
     t.integer "price"
     t.boolean "active"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "address"
@@ -116,7 +119,7 @@ ActiveRecord::Schema.define(version: 2019_03_19_213831) do
   create_table "settings", force: :cascade do |t|
     t.boolean "enable_sms", default: true
     t.boolean "enable_email", default: true
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_settings_on_user_id"
@@ -154,4 +157,17 @@ ActiveRecord::Schema.define(version: 2019_03_19_213831) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "calendars", "rooms"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
+  add_foreign_key "notifications", "users"
+  add_foreign_key "photos", "rooms"
+  add_foreign_key "reservations", "rooms"
+  add_foreign_key "reservations", "users"
+  add_foreign_key "reviews", "reservations"
+  add_foreign_key "reviews", "rooms"
+  add_foreign_key "reviews", "users", column: "guest_id"
+  add_foreign_key "reviews", "users", column: "host_id"
+  add_foreign_key "rooms", "users"
+  add_foreign_key "settings", "users"
 end
