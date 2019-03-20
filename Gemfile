@@ -9,6 +9,7 @@ gem 'rails', '~> 5.2.2'
 gem 'puma', '~> 3.11'
 gem 'pg', '~> 0.21.0'
 gem "aws-sdk-s3"
+gem 'rails_12factor'
 # gem 'rack'
 # gem 'sqlite3'
 # gem 'pg'
