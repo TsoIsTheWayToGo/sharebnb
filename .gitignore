@@ -30,10 +30,10 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 /config/environments/development.rb
-/config/initializers/devise.rb
+ 
 /config/storage.yml
 /app/views/rooms/show.html.erb
-
+ 
 /config/initializers/twilio.rb
 /config/secrets.yml
 /config/initializers/stripe.rb
