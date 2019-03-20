@@ -8,6 +8,7 @@ gem 'rails', '~> 5.2.2'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 gem 'pg', '~> 0.21.0'
+gem "aws-sdk-s3"
 # gem 'rack'
 # gem 'sqlite3'
 # gem 'pg'
