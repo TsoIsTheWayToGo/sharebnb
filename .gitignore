@@ -28,4 +28,8 @@
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
-# 
+# /config/master.key
+/config/environments/development.rb
+/config/initializers/devise.rb
+/config/storage.yml
+
