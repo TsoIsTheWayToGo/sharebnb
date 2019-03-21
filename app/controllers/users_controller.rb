@@ -72,9 +72,12 @@ class UsersController < ApplicationController
     redirect_to payment_method_path
   end
 
-
-  def is_active_host
-    !self.merchant_id.blank?
+  def merchant_id
+    self.merchant_id.nil?
+  end
+  
+  def is_active_host?
+    !self.merchant_id.nil?
   end
   private
 

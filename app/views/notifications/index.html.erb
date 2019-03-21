@@ -1,7 +1,11 @@
 <div class="panel panel-default">
   <div class="panel-body">
     <div class="container" id="notifications">
+      <% if @notifications.length == 0  %>
+      <h4 class="text-center">You have no new notifications.</h4>
+      <% else %>
       <%= render @notifications %>
+      <% end %>
     </div>
   </div>
 </div>

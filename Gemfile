@@ -37,7 +37,7 @@ gem 'bootstrap-sass', '~> 3.4.1'
 gem 'sassc-rails', '>= 2.1.0'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-
+gem 'table_print'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

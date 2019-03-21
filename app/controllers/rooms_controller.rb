@@ -12,7 +12,9 @@ class RoomsController < ApplicationController
   end
 
   def create
-    if !current_user.is_active_host
+    # debugger
+    
+    if current_user.merchant_id.nil?
       return redirect_to payout_method_path, alert: "Please Connect to Stripe Express first."
     end
 
