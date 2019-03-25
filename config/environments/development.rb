@@ -75,6 +75,6 @@ Rails.application.configure do
           secret_access_key: Rails.application.credentials.aws[:secret_access_key],
           s3_region: 'us-west-1'
       
-}
+        }
   }
 end
