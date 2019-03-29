@@ -9,7 +9,8 @@ gem 'rails', '~> 5.2.2'
 gem 'puma', '~> 3.11'
 gem 'pg', '~> 0.21.0'
 gem "aws-sdk-s3"
-gem 'rails_12factor'
+
+# gem 'rails_12factor'
 # gem 'rack'
 # gem 'sqlite3'
 # gem 'pg'
@@ -51,11 +52,11 @@ group :development, :test do
 end
 # Use sqlite3 as the database for Active Record
 # gem 'taps', '~> 0.3.24'
-# group :production do 
+group :production do 
 #   gem 'pg'
 #   gem 'activerecord-postgresql-adapter'
-#   # gem 'rails_12factor'
-# end
+  gem 'rails_12factor'
+end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
