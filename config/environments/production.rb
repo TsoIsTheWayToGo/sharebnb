@@ -40,7 +40,7 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :amazon
-  # config.require_master_key = true
+  config.require_master_key = true
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
@@ -55,7 +55,7 @@ Rails.application.configure do
 
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
-  # config.read_encrypted_secrets = true
+  config.read_encrypted_secrets = true
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
@@ -93,7 +93,52 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
 
-    
+    # Settings specified here will take precedence over those in config/application.rb.
+
+  # In the development environment your application's code is reloaded on
+  # every request. This slows down response time but is perfect for development
+  # since you don't have to restart the web server when you make code changes.
+  config.cache_classes = false
+
+  # Do not eager load code on boot.
+  config.eager_load = false
+
+  # Show full error reports.
+  config.consider_all_requests_local = true
+
+  # Enable/disable caching. By default caching is disabled.
+  if Rails.root.join('tmp/caching-dev.txt').exist?
+    config.action_controller.perform_caching = true
+
+    config.cache_store = :memory_store
+    config.public_file_server.headers = {
+      'Cache-Control' => 'public, max-age=172800'
+    }
+  else
+    config.action_controller.perform_caching = false
+
+    config.cache_store = :null_store
+  end
+
+  # Don't care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.perform_caching = false
+
+  # Print deprecation notices to the Rails logger.
+  config.active_support.deprecation = :log
+
+  # Raise an error on page load if there are pending migrations.
+  config.active_record.migration_error = :page_load
+
+  # Debug mode disables concatenation and preprocessing of assets.
+  # This option may cause significant delays in view rendering with a large
+  # number of complex assets.
+  config.assets.debug = true
+
+  # Suppress logger output for asset requests.
+  config.assets.quiet = true
+  config.active_storage.service = :local
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
@@ -101,9 +146,9 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  config.action_cable.url = "ws://localhost:3000/cable"
 
-
-  config.action_mailer.default_url_options = { host: 'sharebnbb.herokuapp.com'}
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   config.action_mailer.smtp_settings = {
       address: 'smtp.gmail.com',
