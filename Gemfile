@@ -54,7 +54,7 @@ end
 # gem 'taps', '~> 0.3.24'
 group :production do 
 #   gem 'pg'
-#   gem 'activerecord-postgresql-adapter'
+  gem 'activerecord-postgresql-adapter'
   gem 'rails_12factor'
 end
 group :development do
