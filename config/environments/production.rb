@@ -37,14 +37,14 @@ Rails.application.configure do
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
-  config.action_mailer.default_url_options = { :host => 'sharebnbb.heroku.com' }
+  config.action_mailer.default_url_options = { :host => 'http://www.sharebnbb.herokuapp.com' }
 
   config.action_mailer.smtp_settings = {
       address: 'smtp.gmail.com',
       port: 587,
       enable_starttls_auto: true,
       authentication: 'plain',
-      domain: 'heroku.com',
+      domain: 'sharebnbb.herokuapp.com',
       user_name: Rails.application.credentials.gmail[:username],
       password: Rails.application.credentials.gmail[:password]
   }
@@ -75,7 +75,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "sharebnb_#{Rails.env}"
 
   config.cache_store = :redis_cache_store, {url: "redis://192.168.0.10:6379/0"}
-  config.action_cable.url = 'ws://www.sharebnbb.heroku.com/cable'
+  config.action_cable.url = 'ws://www.sharebnbb.herokuapp.com/cable'
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
