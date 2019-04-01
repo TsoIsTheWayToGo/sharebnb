@@ -62,5 +62,5 @@ Rails.application.routes.draw do
   post '/notification_settings' => "settings#update"
 
   get 'notifications' => 'notifications#index'
-  mount ActionCable.server => '/cable'
+  mount ActionCable.server => "/cable"
 end
