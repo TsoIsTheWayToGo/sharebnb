@@ -73,9 +73,8 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "sharebnb_#{Rails.env}"
   
   config.cache_store = :redis_cache_store, {url: "redis://192.168.0.10:6379/0"}
-  # config.action_cable.url = 'wss://sharebnbb.herokuapp.com/cable'
   config.action_cable.url = 'wss://sharebnbb.herokuapp.com/cable'
-  config.action_cable.allowed_request_origins = [ 'https://example.com', /http:\/\/sharebnbb.herokuappra.*/ ]
+  config.action_cable.allowed_request_origins = [ 'https://sharebnbb.herokuapp.com', /http:\/\/sharebnbb.herokuappra.*/ ]
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
