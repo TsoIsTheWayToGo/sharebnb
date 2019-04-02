@@ -20,10 +20,17 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li>
-       
-          <button class="btn btn-form btn-small">
-            <%= link_to "Become a host", new_room_path, style: "color: white; text-decoration: none;" %>
+          
+          <% if current_page?(dashboard_path) %>
+            <button class="btn btn-form btn-small">
+            <%= link_to "Become a Host", new_room_path, style: "color: white; text-decoration: none;" %>
           </button>
+          <% else %>  
+          <button class="btn btn-form btn-small">
+            <%= link_to "Dashboard", dashboard_path, style: "color: white; text-decoration: none;" %>
+          </button>
+          <% end %>
+          
     
         </li>
 
