@@ -52,17 +52,30 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :amazon
 
-  config.paperclip_defaults = {
-  storage: :s3,
-  path: ':class/:attachment/:id/:style/:filename',
-  s3_host_name: 's3-us-west-1.amazonaws.com',
-  s3_credentials: {
-    bucket: ENV.fetch('S3_BUCKET_NAME'),
-    access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
-    secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
-    s3_region: ENV.fetch('AWS_REGION')
+#   config.paperclip_defaults = {
+#   storage: :s3,
+#   path: ':class/:attachment/:id/:style/:filename',
+#   s3_host_name: 's3-us-west-1.amazonaws.com',
+#   s3_credentials: {
+#     bucket: ENV.fetch('S3_BUCKET_NAME'),
+#     access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
+#     secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
+#     s3_region: ENV.fetch('AWS_REGION')
+#   }
+# }
+
+ config.paperclip_defaults = {
+      storage: :s3,
+      path: ':class/:attachment/:id/:style/:filename',
+      s3_host_name: 's3-us-west-1.amazonaws.com',
+      s3_credentials: {
+          bucket: 'shareebnb',
+          access_key_id: Rails.application.credentials.aws[:access_key_id],
+          secret_access_key: Rails.application.credentials.aws[:secret_access_key],
+          s3_region: 'us-west-1'
+      
+        }
   }
-}
   config.require_master_key = true
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
