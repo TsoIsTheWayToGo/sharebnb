@@ -38,6 +38,7 @@ development:
 test:
   <<: *default
   database: Sharebnb_test
+  
 production:
   <<: *default
   database: Sharebnb_production

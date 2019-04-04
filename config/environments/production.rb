@@ -66,14 +66,13 @@ Rails.application.configure do
 
  config.paperclip_defaults = {
       storage: :s3,
-      path: ':class/:attachment/:id/:style/:filename',
+      url: ':class/:attachment/:id/:style/:filename',
       s3_host_name: 's3-us-west-1.amazonaws.com',
       s3_credentials: {
-          bucket: 'shareebnb',
+          bucket: 'shareebnbb',
           access_key_id: Rails.application.credentials.aws[:access_key_id],
           secret_access_key: Rails.application.credentials.aws[:secret_access_key],
           s3_region: 'us-west-1'
-      
         }
   }
   config.require_master_key = true

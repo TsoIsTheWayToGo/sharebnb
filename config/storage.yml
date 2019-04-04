@@ -12,7 +12,7 @@ amazon:
   access_key_id: Rails.application.credentials.aws[:access_key_id]
   secret_access_key: Rails.application.credentials.aws[:secret_access_key]
   region: us-west-1
-  bucket: shareebnb
+  bucket: shareebnbb
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
