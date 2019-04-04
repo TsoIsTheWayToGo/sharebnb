@@ -21,13 +21,13 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
           
-          <% if current_page?(dashboard_path) %>
-            <button class="btn btn-form btn-small">
-            <%= link_to "Become a Host", new_room_path, style: "color: white; text-decoration: none;" %>
+          <% if current_page?(root_path) %>
+          <button class="btn btn-form btn-small">
+            <%= link_to "Dashboard", dashboard_path, style: "color: white; text-decoration: none;" %>
           </button>
           <% else %>  
           <button class="btn btn-form btn-small">
-            <%= link_to "Dashboard", dashboard_path, style: "color: white; text-decoration: none;" %>
+            <%= link_to "Become a Host", new_room_path, style: "color: white; text-decoration: none;" %>
           </button>
           <% end %>
           
@@ -69,21 +69,21 @@
 </nav>
 
 <% if (user_signed_in?) && !current_page?(root_path) && !current_page?("rooms/#{params[:id]}") %>
-  <nav class="navbar navbar-default" style="background-color: #949799">
+  <nav class="navbar navbar-default" style="background-color: #999">
     <div class="container">
       <ul class="nav navbar-nav">
-        <li <% if current_page?(dashboard_path) %> class="active"<% end %>><%= link_to "Dashboard", dashboard_path %></li>
+        <li <% if current_page?(dashboard_path) %> class="active" <% end %>><%= link_to "Dashboard", dashboard_path, :style=>"color: black" %></li>
         
-        <li <% if current_page?(rooms_path) %> class="active"<% end %>><%= link_to "Manage Listings", rooms_path %></li>
-        <li <% if current_page?(conversations_path) %> class="active"<% end %>><%= link_to "Messages", conversations_path %></li>
-        <li <% if current_page?(revenues_path) %> class="active"<% end %>><%= link_to "Revenues", revenues_path %></li>
+        <li <% if current_page?(rooms_path) %> class="active"<% end %>><%= link_to "Manage Listings", rooms_path, :style=>"color: black" %> </li>
+        <li  <% if current_page?(conversations_path) %> class="active"<% end %>><%= link_to "Messages", conversations_path, :style=>"color: black" %></li>
+        <li  <% if current_page?(revenues_path) %> class="active"<% end %>><%= link_to "Revenues", revenues_path, :style=>"color: black" %></li>
         
       <% if current_user.rooms.length > 0 %>
-        <li <% if current_page?(your_reservations_path) %> class="active"<% end %>><%= link_to "Your Reservations", your_reservations_path %></li> 
-        <li <% if current_page?(host_calendar_path) %> class="active"<% end %>><%= link_to "Calendar", host_calendar_path %></li>
+        <li  <% if current_page?(your_reservations_path) %> class="active"<% end %>><%= link_to "Your Reservations", your_reservations_path, :style=>"color: black" %></li> 
+        <li  <% if current_page?(host_calendar_path) %> class="active"<% end %>><%= link_to "Calendar", host_calendar_path, :style=>"color: black" %></li>
       <% end %>  
-        <li <% if current_page?(your_trips_path) %> class="active"<% end %>><%= link_to "Your Trips", your_trips_path %></li>
-        <li <% if current_page?(payment_method_path) || current_page?(payout_method_path)%> class="active listyle"<% end %>><%= link_to "Account Settings", payment_method_path %></li>
+        <li  <% if current_page?(your_trips_path) %> class="active"<% end %>><%= link_to "Your Trips", your_trips_path, :style=>"color: black" %></li>
+        <li  <% if current_page?(payment_method_path) || current_page?(payout_method_path)%> class="active"<% end %>><%= link_to "Account Settings", payment_method_path, :style=>"color: black" %></li>
 
      
      

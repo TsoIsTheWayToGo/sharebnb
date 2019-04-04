@@ -101,7 +101,6 @@ a {
   border-color: #2d467b;
   background-color: #2d467b;
 }
-
 // PANELS
 .panel-default .panel-heading {
   color: #ffffff;
@@ -248,7 +247,19 @@ a {
   font-weight: bold;
   text-decoration: none;
 }
+//temp
+.equal {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
 
+
+.panel {
+  flex:1 0 100%;
+}
 // PHOTO UPLOAD
 .btn-file {
   position: relative;
