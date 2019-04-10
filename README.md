@@ -1,27 +1,18 @@
-# README
+[Link to Live Site](https://sharebnbb.herokuapp.com)
+# ShareBnB
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+  ShareBnB is a fully-spec'ed full-stack web application inspired by AirBnB. I have incorparated so many features. Users can list their homes for people rent and make money.
 
-Things you may want to cover:
+## Technologies Used:
+* Javascript
+* Ruby on Rails
+* PostgreSQL
+* Google Maps API
+* HTML5 & CSS3
+* BootStrap
+* Twilio Api
+* Facebook Api 
+* Stripe Connect Api
+* Devise Api
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-** TODO make readme
-
-** testing card for stripe 4242 4242 4242 4242
+## Users(features)
