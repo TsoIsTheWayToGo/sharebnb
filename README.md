@@ -109,11 +109,99 @@ $(() ->
 )
 
 ```
+- Coding it this way allows the messaging to be instant. Meaning as soon as I hit send the other user receives the message instantly. The *Notifications* are also real time.
+
+```
+$(() ->
+  App.notifications = App.cable.subscriptions.create {channel: "NotificationsChannel", id: $('#user_id').val() },
+    received: (data) ->
+      $('#num_of_unread').html(data.unread)
+      $('#notifications').prepend(data.message)
+      $('#navbar_num_of_unread').html(data.unread)
+)
+
+```
 ### Calendar
-  * The host Calendar is my the feature that I am most proud of. It is a very convient tool for host to manage their listings. Each listing has its own calendar and Host can easily change the prices and availibility of their listings. 
+  * The host Calendar is my the feature that I am most proud of. Using the gem *fullCalendar-rails*, It is a very convient tool for host to manage their listings. Each listing has its own calendar and Host can easily change the prices and availibility of their listings. These changes that users make on their calendar will be accounted for when a guest checks out a room. Days with special prices will be listed. Take a look at the schema.
+  ```
+   create_table "calendars", force: :cascade do |t|
+    t.date "day"
+    t.integer "price"
+    t.integer "status"
+    t.bigint "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_calendars_on_room_id"
+  end
+
+  ```
+  <p align="center">
+    <img align="center" width="70%" src="./readme/calendar.gif">
+  </p>
+  <br>
+  <br>
+
 ### Payment
+* Checkout is done in the *Room Show* page and users select the dates that they want to book the room and when they hit the Book Now button their card will be charged. If the room is not an instant booking room then they will only be charged when the host approves their stay. If a reservation has been book/request both the host and the guest will receive notifications of the transaction. The Reservation#charge method does all the work
+```
+  def charge(room, reservation)
+      if !reservation.user.stripe_id.blank?
+        customer = Stripe::Customer.retrieve(reservation.user.stripe_id)
+        charge = Stripe::Charge.create(
+          :customer => customer.id,
+          :amount => reservation.total * 100,
+          :description => room.listing_name,
+          :currency => "usd"
+          :destination => {
+            :amount => reservation.total * 80, # 80% of the total amount goes to the Host
+            :account => room.user.merchant_id # Host's Stripe customer ID
+          }
+        )
+  
+        if charge
+          reservation.Approved!
+           ReservationMailer.send_email_to_guest(reservation.user, room).deliver_later if reservation.user.setting.enable_email
+        unless current_user.phone_verified.blank?
+           send_sms(room, reservation) if room.user.setting.enable_sms
+        end
+          flash[:notice] = "Reservation created successfully!"
+        else
+          reservation.Declined!
+          flash[:alert] = "Cannot charge with this payment method!"
+        end
+      end
+    rescue Stripe::CardError => e
+      reservation.declined!
+      flash[:alert] = e.message
+    end
+```
+
+* By integrating stripe Users of ShareBnB are able to Add their credit card and checkout. Guest will not be able to checkout unless they have a credit card saved on their account. If a guest tries to checkout without a credit card saved they will be redirected to the Payment Method page. Payment Methods can be accessed in the *Account Settings* tab.
+
+  <p align="center">
+    <img align="center" width="70%" src="./readme/add_card.gif">
+  </p>
+  <br>
+  <br>
+
 ### Payout
+* Host can withdraw all their earnings whenever they please. Thanks to Stripe Express. The host get 80% of the total earnings and I recieve 20%.
+```
+  customer = Stripe::Customer.retrieve(reservation.user.stripe_id)
+        charge = Stripe::Charge.create(
+          :customer => customer.id,
+          :amount => reservation.total * 100,
+          :description => room.listing_name,
+          :currency => "usd"
+          :destination => {
+            :amount => reservation.total * 80, # 80% of the total amount goes to the Host
+            :account => room.user.merchant_id # Host's Stripe customer ID
+          }
+        )
+```
+
 ### Revenue
+  * I have integrated weekly revenue charts with *Chartkick* this feature allows host to easily visualize their weekly earnings.
 
 ### 
 
