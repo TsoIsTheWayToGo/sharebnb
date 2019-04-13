@@ -93,8 +93,7 @@ class ReservationsController < ApplicationController
           #   :account => room.user.merchant_id # Host's Stripe customer ID
           # }
         )
-        # TODO make ^ work 
-# need to make a new stripe account that has nothing to do with this site
+  
         if charge
           reservation.Approved!
            ReservationMailer.send_email_to_guest(reservation.user, room).deliver_later if reservation.user.setting.enable_email
