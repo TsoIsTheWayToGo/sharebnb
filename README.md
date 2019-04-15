@@ -2,6 +2,24 @@
 # ShareBnB
 
   ShareBnB is a fully-spec'ed full-stack web application inspired by AirBnB. I have incorparated many of the features that AirBnB has including payment, payout, sign-up/login with facebook and notifications via email and text message. Users can list their homes for people rent and make money. This read me will include/highlight these cool features, go to the [Live Site](https://sharebnbb.herokuapp.com) make and account and check them out for yourself.
+# Table of Contents
+1. [Technologies Used](#Technologies-Used)
+2. [Features](#Features)
+    - [Users(Auth)](#Users(Auth))
+    - [Dashboard](#Dashboard)
+    - [Searching](#searching)
+    - [Room Show](#Room-show)
+    - [Reservations](#Reservations)
+    - [Notifications](#Notifications)
+    - [Becoming a host](#Becoming-a-host)
+    - [Renting a Room](#Renting-a-Room)
+    - [Messaging](#Messaging)
+    - [Calendar](#Calendar)
+    - [Payment](#Payment)
+    - [Payout](#Payout)
+    - [Revenue](#Revenue)
+    - [Reviews](#Reviews)
+    - []()
 
 ## Technologies Used:
 * Ruby on Rails
@@ -15,6 +33,7 @@
 * Stripe Connect Api
 * Devise Api
 * AWS S3
+
 
 ##  Features
  
@@ -50,6 +69,7 @@
     end
 
     ```
+    &nbsp;
 * Phone Number Verification 
   - Users can recieve text notifications but first they must verify their phone number. They must go to *Edit Profile* and enter their phone number and click *verify*. They will recieve a text message with a pin code and they must enter it in the verify pin box. Once verified Users with phone numbers verified will recieve a green check icon in their profile. 
   <p align="center">
@@ -58,7 +78,7 @@
     <br>
     <img align="center" width="70%" src="./readme/verified_pn.png">
   </p>
-
+&nbsp;
 ### Dashboard
 * Once a user has made an account they now have access to a their dashboard. From the dashboard users will have the access to their 
   <p align="center">
@@ -133,7 +153,6 @@ $(() ->
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_calendars_on_room_id"
   end
-
   ```
   <p align="center">
     <img align="center" width="70%" src="./readme/calendar.gif">
@@ -203,7 +222,17 @@ $(() ->
 ### Revenue
   * I have integrated weekly revenue charts with *Chartkick* this feature allows host to easily visualize their weekly earnings.
 
-### 
+### Reviews
+* Host can review guest and guest can review host. This two way review system makes for better customer experiece. Host can deny guest with bad reviews from staying at their house. If a host has bad reviews then Guest can know this and choose not to stay with the host.
+
+  <p align="center">
+    <img align="left" width="50%" src="./readme/host_review.png">
+    <img align="right" width="50%" src="./readme/guest_review.png">
+
+  </p>
+  
+  <br>
+  <br>
 
 ### 
 ### 
