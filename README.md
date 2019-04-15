@@ -4,7 +4,8 @@
   ShareBnB is a fully-spec'ed full-stack web application inspired by AirBnB. I have incorparated many of the features that AirBnB has including payment, payout, sign-up/login with facebook and notifications via email and text message. Users can list their homes for people rent and make money. This read me will include/highlight these cool features, go to the [Live Site](https://sharebnbb.herokuapp.com) make and account and check them out for yourself.
 # Table of Contents
 1. [Technologies Used](#Technologies-Used)
-2. [Features](#Features)
+2. [How To Use Site](#How-To-Use-Site)
+3. [Features](#Features)
     - [Users(Auth)](#Users(Auth))
     - [Dashboard](#Dashboard)
     - [Searching](#searching)
@@ -34,6 +35,9 @@
 * Devise Api
 * AWS S3
 
+## How To Use Site
+
+#### 
 
 ##  Features
  
@@ -141,6 +145,12 @@ $(() ->
 )
 
 ```
+
+  <p align="center">
+    <img align="center" width="70%" src="./readme/messaging.gif">
+  </p>
+  <br>
+  <br>
 ### Calendar
   * The host Calendar is my the feature that I am most proud of. Using the gem *fullCalendar-rails*, It is a very convient tool for host to manage their listings. Each listing has its own calendar and Host can easily change the prices and availibility of their listings. These changes that users make on their calendar will be accounted for when a guest checks out a room. Days with special prices will be listed. Take a look at the schema.
   ```
@@ -221,6 +231,12 @@ $(() ->
 
 ### Revenue
   * I have integrated weekly revenue charts with *Chartkick* this feature allows host to easily visualize their weekly earnings.
+
+  <p align="center">
+    <img align="center" width="70%" src="./readme/revenue.png">
+  </p>
+  <br>
+  <br>
 
 ### Reviews
 * Host can review guest and guest can review host. This two way review system makes for better customer experiece. Host can deny guest with bad reviews from staying at their house. If a host has bad reviews then Guest can know this and choose not to stay with the host.

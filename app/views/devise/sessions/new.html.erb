@@ -30,5 +30,42 @@
 
     <hr/>
     <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class: "btn btn-facebook btn-block" %>
+    <button class="btn btn-demo btn-block" data-toggle="modal" data-target="#demo-login">Demo Test Account</button>
+  </div>
+</div>
+
+<!-- MODAL FOR Demo Login -->
+<div id="demo-login" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" ><center>Demo Login Account</center></h4>
+      </div>
+
+      <div class="modal-body">
+      <p> In order to experience the grandeur of ShareBnB user must be a host.</p>
+     <p> This demo account is prefilled with listings and is linked to a stripe connect and has a payment method saved.</p>
+     <p> All transactions are with test data so feel free to let your imagination go wild and plan the vacation of your dreams. </p>
+      <p> Be sure to check out the Calendar feature! Enjoy! 😊😊😊</p>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-group">
+        <%= f.email_field :email, autofocus: true, placeholder: "fimmoxywi-5841@yopmail.com", class: "form-control", value: "fimmoxywi-5841@yopmail.com" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.password_field :password, placeholder: "1234567", class: "form-control", value: "1234567" %>
+      </div>
+
+      <div>
+
+      <div class="actions">
+        <%= f.submit "Log in", class: "btn btn-normal btn-block" %>
+      </div>
+    <% end %>
+      </div>
+
+    </div>
   </div>
 </div>
